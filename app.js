@@ -1,6 +1,8 @@
 import express from "express";
 import userRouter from "./routes/user.js"
+import taskRouter from "./routes/task.js"
 import {config} from "dotenv"
+import cookieParser from "cookie-parser";
 
 export const app = express();
 
@@ -9,7 +11,9 @@ config({
 })
 
 app.use(express.json())
-app.use("/user",userRouter)
+app.use("/api/v1/user",userRouter)
+app.use("/api/v1/task",taskRouter)
+app.use(cookieParser())
 
 
 
